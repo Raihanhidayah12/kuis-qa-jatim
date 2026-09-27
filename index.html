@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Q&A TOP 3 - Duta Budaya Jawa Timur</title>
   
   <!-- Font Google: Cinzel & Plus Jakarta Sans -->
@@ -33,12 +33,24 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Custom Smooth Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #120303;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #800e08;
+      border-radius: 4px;
+      border: 1px solid var(--gold-border);
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg-gradient);
       color: var(--text-light);
       min-height: 100vh;
-      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -58,78 +70,82 @@
 
     .app-wrapper {
       width: 100%;
-      max-width: 1100px;
-      padding: 1.5rem 1rem 0;
+      max-width: 900px;
+      padding: 2rem 1.5rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       z-index: 2;
-      flex-grow: 1;
+      flex: 1;
     }
 
     .header-panel {
       text-align: center;
-      margin-bottom: 1.5rem;
-      position: relative;
+      margin-bottom: 2rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .surya-majapahit-icon {
-      width: clamp(48px, 8vw, 70px);
-      height: clamp(48px, 8vw, 70px);
-      margin: 0 auto 0.5rem;
-      filter: drop-shadow(0 0 12px rgba(243, 198, 105, 0.6));
+      width: 50px;
+      height: 50px;
+      margin: 0 0 0.5rem 0;
+      filter: drop-shadow(0 0 10px rgba(243, 198, 105, 0.6));
       animation: pulseGlow 3s infinite alternate ease-in-out;
     }
 
     @keyframes pulseGlow {
-      0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(243, 198, 105, 0.4)); }
-      100% { transform: scale(1.05); filter: drop-shadow(0 0 18px rgba(243, 198, 105, 0.8)); }
+      from { transform: scale(0.95); filter: drop-shadow(0 0 8px rgba(243, 198, 105, 0.4)); }
+      to { transform: scale(1.05); filter: drop-shadow(0 0 18px rgba(243, 198, 105, 0.8)); }
     }
 
     .header-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 900;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      line-height: 1.1;
     }
 
     .header-subtitle {
-      font-size: clamp(0.75rem, 2vw, 0.95rem);
+      font-size: clamp(0.8rem, 2vw, 1rem);
       color: #d1b894;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-top: 0.25rem;
+      margin-top: 0.4rem;
       font-weight: 600;
     }
 
     .action-toolbar {
       display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
     }
 
     .btn-action {
-      background: rgba(30, 8, 8, 0.8);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--gold-border);
       color: var(--gold-primary);
-      padding: 0.6rem 1.2rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 50px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      font-size: 0.9rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
       backdrop-filter: blur(8px);
     }
 
@@ -137,29 +153,28 @@
       background: var(--gold-gradient);
       color: #1a0303;
       border-color: transparent;
+      box-shadow: 0 0 15px rgba(243, 198, 105, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(243, 198, 105, 0.4);
     }
 
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(1rem, 2.5vw, 1.75rem);
+      gap: 1.5rem;
       width: 100%;
-      max-width: 850px;
       perspective: 1000px;
       margin-bottom: 2rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .cards-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.85rem;
+        gap: 1rem;
       }
     }
 
     .quiz-card {
-      aspect-ratio: 1.45 / 1;
+      aspect-ratio: 1.25 / 1;
       border-radius: 16px;
       position: relative;
       cursor: pointer;
@@ -188,27 +203,27 @@
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px dashed rgba(243, 198, 105, 0.3);
+      border: 1px dashed rgba(243, 198, 105, 0.35);
       border-radius: 12px;
       pointer-events: none;
     }
 
     .card-number {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
       font-weight: 800;
       color: #ffffff;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
       transition: all 0.3s ease;
     }
 
     .card-status-badge {
       position: absolute;
-      bottom: 8px;
-      font-size: 0.65rem;
+      bottom: 10px;
+      font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 1px;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 20px;
       text-transform: uppercase;
       opacity: 0;
@@ -216,7 +231,7 @@
     }
 
     .quiz-card:not(.selected):hover {
-      transform: translateY(-6px) scale(1.02);
+      transform: translateY(-6px) scale(1.03);
     }
 
     .quiz-card:not(.selected):hover .quiz-card-inner {
@@ -225,7 +240,7 @@
     }
 
     .quiz-card.highlighted {
-      transform: scale(1.08) translateY(-8px);
+      transform: scale(1.08) translateY(-6px);
       z-index: 10;
     }
 
@@ -246,7 +261,7 @@
     .quiz-card.selected .quiz-card-inner {
       background: var(--card-bg-selected);
       border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
     .quiz-card.selected .card-number {
@@ -291,13 +306,13 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(10, 2, 2, 0.85);
+      background: rgba(10, 2, 2, 0.88);
       backdrop-filter: blur(12px);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1.5rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -314,11 +329,10 @@
       border-radius: 24px;
       width: 100%;
       max-width: 680px;
-      max-height: 85dvh;
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(243, 198, 105, 0.25);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(243, 198, 105, 0.25);
       transform: scale(0.85) translateY(30px);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       overflow: hidden;
@@ -331,12 +345,12 @@
     .modal-header-banner {
       background: var(--gold-gradient);
       color: #1a0303;
-      padding: 0.8rem 1.2rem;
+      padding: 1rem 1.5rem;
       text-align: center;
       font-family: 'Cinzel', serif;
       font-weight: 800;
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      letter-spacing: 1.5px;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      letter-spacing: 2px;
       border-bottom: 2px solid rgba(0,0,0,0.15);
       display: flex;
       align-items: center;
@@ -345,25 +359,21 @@
     }
 
     .modal-body {
-      padding: clamp(1.2rem, 4vw, 2.2rem);
+      padding: 2.2rem 2rem;
+      max-height: 60vh;
       overflow-y: auto;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .question-text {
-      font-size: clamp(1.05rem, 2.8vw, 1.35rem);
-      line-height: 1.65;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      line-height: 1.7;
       color: #fff8eb;
       font-weight: 600;
       text-align: center;
-      position: relative;
     }
 
     .modal-footer {
-      padding: 1rem 1.5rem 1.5rem;
+      padding: 1.2rem 2rem 1.8rem;
       display: flex;
       justify-content: center;
       border-top: 1px solid rgba(243, 198, 105, 0.15);
@@ -373,11 +383,11 @@
       background: var(--gold-gradient);
       color: #1f0505;
       border: none;
-      padding: 0.85rem 3rem;
+      padding: 0.85rem 3.5rem;
       border-radius: 50px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
-      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      font-size: 1.05rem;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(243, 198, 105, 0.4);
       transition: all 0.3s ease;
@@ -391,8 +401,7 @@
 
     .cultural-footer-svg {
       width: 100%;
-      height: clamp(80px, 16vw, 160px);
-      margin-top: auto;
+      height: 90px;
       z-index: 2;
       display: block;
       pointer-events: none;
@@ -403,7 +412,7 @@
       top: 20px;
       background: var(--gold-gradient);
       color: #1a0303;
-      padding: 0.75rem 1.5rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 30px;
       font-weight: 800;
       font-size: 0.9rem;
@@ -479,6 +488,7 @@
     </div>
   </div>
 
+  <!-- Decorative Cultural SVG Footer -->
   <svg class="cultural-footer-svg" viewBox="0 0 1200 160" preserveAspectRatio="none" fill="none">
     <path d="M0,160 L0,120 Q60,110 120,130 T240,120 T360,135 T480,115 T600,130 T720,110 T840,130 T960,115 T1080,130 Q1140,110 1200,125 L1200,160 Z" fill="#170303"/>
     <g transform="translate(10, 20)">
@@ -624,8 +634,8 @@
 
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 50,
-          spread: 60,
+          particleCount: 60,
+          spread: 70,
           origin: { y: 0.7 }
         });
       }
@@ -639,7 +649,6 @@
       setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    // Initialize cards on page load
     initCards();
   </script>
 </body>
